@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nyiur Senja - Pameran Produk Tradisional</title>
+    
+    <meta name="description" content="Mangkok batok kelapa handmade dari Bogor. Harga mulai Rp5.000. Produk eco-friendly, kuat & unik. Pesan via WhatsApp!">
+    <meta property="og:title" content="Nyiur Senja - Mangkok Batok Kelapa Handmade Bogor">
+    <meta property="og:description" content="Produk eco-friendly dari batok kelapa pilihan. Harga mulai Rp5.000. Lihat katalog & pesan langsung via WA!">
+    <meta property="og:image" content="mangkok2.jpg">
+    <meta property="og:url" content="https://namawebkamu.vercel.app">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth; 
+        }
+
+        html {
+            scroll-padding-top: 90px;
+        }
+
+        :root {
+            --laut-dalam: #023047;
+            --laut-biru: #219EBC;
+            --pasir-pantai: #FFB703;
+            --cokelat-kelapa: #FB8500;
+            --gradient-utama: linear-gradient(135deg, #023047 0%, #219EBC 100%);
+        }
+
+        body {
+            background: #f5f5f5;
+            color: var(--laut-dalam);
+            overflow-x: hidden;
+        }
+
+        /* LOGIN PAGE */
+        #loginPage {
+            width: 100%; 
+            height: 100vh;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 9999;
+            background: var(--gradient-utama);
+        }
+
+        .login-box {
+            background: white; 
+            padding: 50px 40px; 
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            width: 90%; 
+            max-width: 420px; 
+            text-align: center;
+            animation: slideUp 0.6s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .login-logo {
+            width: 90px; 
+            height: 90px; 
+            margin: 0 auto 20px;
+            background: var(--gradient-utama); 
+            border-radius: 50%;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            font-size: 45px;
+        }
+
+        .btn-masuk {
+            width: 100%; 
+            padding: 14px; 
+            background: var(--gradient-utama);
+            color: white; 
+            border: none; 
+            border-radius: 10px;
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: pointer;
+            transition: 0.3s; 
+            margin-top: 10px;
+        }
+
+        .btn-masuk:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(2,48,71,0.3);
+        }
+
+        .input-group {
+            text-align: left;
+            margin: 20px 0 10px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--laut-dalam);
+        }
+
+        .input-group input {
+            width: 100%; 
+            padding: 14px 15px; 
+            border: 2px solid #e0e0e0;
+            border-radius: 10px; 
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: var(--laut-biru);
+            outline: none;
+        }
+
+        #mainWebsite { 
+            display: none; 
+            width: 100%; 
+        }
+
+        /* HEADER + HAMBURGER */
+        header {
+            background: var(--gradient-utama);
+            position: sticky; 
+            top: 0; 
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            height: 70px;
+        }
+
+        .navbar {
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 15px 20px;
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .logo {
+            display: flex; 
+            align-items: center; 
+            font-size: 24px;
+            font-weight: 800; 
+            color: white;
+        }
+
+        .logo span { 
+            color: var(--pasir-pantai); 
+        }
+
+        nav ul {
+            display: flex; 
+            list-style: none; 
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white; 
+            text-decoration: none; 
+            font-weight: 500;
+            transition: 0.3s;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        nav ul li a:hover {
+            background: rgba(255,255,255,0.15);
+            color: var(--pasir-pantai);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .container {
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 30px 20px;
+        }
+
+        section {
+            scroll-margin-top: 90px;
+            padding-top: 20px;
+        }
+
+        h2 {
+            font-size: 32px; 
+            font-weight: 700; 
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            text-align: center; 
+            color: #666; 
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+
+        /* HERO */
+        .hero {
+            background: var(--gradient-utama); 
+            color: white;
+            text-align: center; 
+            padding: 80px 20px;
+            border-radius: 15px;
+            margin-bottom: 50px;
+        }
+
+        .hero h1 {
+            font-size: 44px; 
+            color: var(--pasir-pantai);
+            min-height: 60px;
+            margin-bottom: 15px;
+        }
+
+        #typingText {
+            border-right: 3px solid var(--pasir-pantai);
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { border-color: transparent; }
+            50% { border-color: var(--pasir-pantai); }
+        }
+
+        /* PRODUK */
+        .product-grid {
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px; 
+            max-width: 950px; 
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: white; 
+            border-radius: 15px; 
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .product-img {
+            width: 100%; 
+            height: 250px; 
+            object-fit: cover;
+        }
+
+        .card-content { 
+            padding: 25px; 
+            text-align: center;
+        }
+
+        .card-content h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 26px; 
+            font-weight: 700; 
+            color: var(--cokelat-kelapa);
+            margin-bottom: 15px;
+        }
+
+        .btn-buy {
+            width: 100%; 
+            padding: 12px; 
+            background: var(--gradient-utama);
+            color: white; 
+            border: none; 
+            border-radius: 8px;
+            font-weight: 600; 
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-buy:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(2,48,71,0.3);
+        }
+
+        /* TIM */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .team-photo {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 5px solid var(--pasir-pantai);
+        }
+
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--laut-dalam);
+            margin-bottom: 5px;
+        }
+
+        .team-role {
+            color: var(--laut-biru);
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        /* GALLERY */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            height: 250px;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 15px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* MAPS */
+        .map-container {
+            margin-top: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+        }
+
+        /* BACK TO TOP */
+        #backTop {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: var(--pasir-pantai);
+            color: var(--laut-dalam);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 999;
+            transition: 0.3s;
+        }
+        #backTop:hover {
+            transform: scale(1.1);
+            background: #FFD700;
+        }
+
+        /* POPUP MAKASIH */
+        #popupMakasih {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .popup-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            animation: popUp 0.3s ease;
+            max-width: 350px;
+        }
+        @keyframes popUp {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        footer {
+            background: var(--laut-dalam); 
+            color: var(--pasir-pantai);
+            text-align: center; 
+            padding: 30px 20px; 
+            margin-top: 70px;
+            font-weight: 500;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .product-grid { 
+                grid-template-columns: 1fr; 
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+
+            nav {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 250px;
+                height: 100vh;
+                background: var(--laut-dalam);
+                transition: 0.3s;
+                padding-top: 30px;
+            }
+
+            nav.active {
+                right: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 15px 20px;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                border-radius: 0;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .team-photo {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- LOGIN -->
+    <div id="loginPage">
+        <div class="login-box">
+            <div class="login-logo">🥥</div>
+            
+            <h1>Selamat Datang</h1>
+            <p>Silakan masukkan nama untuk melihat pameran Nyiur Senja</p>
+            <div class="input-group">
+                <label>Nama Lengkap/Panggilan</label>
+                <input type="text" id="namaInput" placeholder="Contoh: Bu Siti / Pak Ahmad">
+            </div>
+            <button class="btn-masuk" onclick="masuk()">Masuk ke Website NyiurSenja</button>
+            <p class="error-msg" id="errorMsg" style="color: #ee4d2d; display: none; margin-top: 15px;"></p>
+        </div>
+    </div>
+
+    <!-- WEBSITE UTAMA -->
+    <div id="mainWebsite">
+        <header>
+            <div class="navbar">
+                <div class="logo">
+                    <img src="logo.jpg" alt="Logo Nyiur Senja" style="height: 40px; margin-right: 10px; border-radius: 8px;">
+                    Nyiur<span>Senja</span>
+                </div>
+                
+                <div class="hamburger" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <nav id="navMenu">
+                    <ul>
+                        <li><a href="#home" onclick="scrollToSection(event, 'home')">Beranda</a></li>
+                        <li><a href="#produk" onclick="scrollToSection(event, 'produk')">Produk</a></li>
+                        <li><a href="#tim" onclick="scrollToSection(event, 'tim')">Tim</a></li>
+                        <li><a href="#dokumentasi" onclick="scrollToSection(event, 'dokumentasi')">Dokumentasi</a></li>
+                        <li><a href="#kontak" onclick="scrollToSection(event, 'kontak')">Kontak</a></li>
+                        <li><a href="#" onclick="lihatPengunjung()" style="color: #FFB703;">👥 Pengunjung</a></li>
+                        <li><a href="#" onclick="gantiNama()" style="color: #ff6b6b;">Ganti Nama</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div class="container">
+            <!-- BERANDA -->
+            <section id="home" class="hero">
+                <h1>🥥 <span id="typingText"></span></h1>
+                <p>Halo <span id="namaUser" style="font-weight: 700; color: #FFB703;"></span>! Selamat datang di nyiur senja</p>
+            </section>
+
+            <!-- PRODUK -->
+            <section id="produk">
+    <h2>🔥 Produk Unggulan</h2>
+    <p class="section-subtitle">Mangkok alami dari batok kelapa langsung ambil dari pohonnya</p>
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="poto1.jpg" alt="Mangkok batok kelapa small 12cm" class="product-img">
+            <div class="card-content">
+                <h3>Mangkok Batok Kelapa nyiursenja</h3>
+                <p class="price">Rp27.500</p>
+                <button class="btn-buy" data-nama="Mangkok Batok Kelapa Small" data-harga="Rp27.500">Pesan via WhatsApp</button>
+            </div>
+        </div>
+    </div>
+</section>
+            <!-- TIM -->
+            <section id="tim">
+                <h2>👥 Tim Nyiur Senja</h2>
+                <p class="section-subtitle">Orang-orang hebat dibalik nyiur senja</p>
+                
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-photo">
+                            <img src="p1.jpg" alt="Angel Aprilia">
+                        </div>
+                        <div class="team-name">Angel Aprilia</div>
+                        <div class="team-role">BROSUR</div>
+                        <div class="team-role">X PM B</div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-photo">
+                            <img src="p2.jpg" alt="Jahra">
+                        </div>
+                        <div class="team-name">Jahra</div>
+                        <div class="team-role">Jurnal</div>
+                        <div class="team-role">X MPLB A</div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-photo">
+                            <img src="p3.jpg" alt="Johanara Habibah">
+                        </div>
+                        <div class="team-name">Johanara Habibah</div>
+                        <div class="team-role">PROPOSAL</div>
+                        <div class="team-role">MPLB A</div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-photo">
+                            <img src="P4.jpg" alt="M. Refan Sumarna">
+                        </div>
+                        <div class="team-name">M. Refan Sumarna</div>
+                        <div class="team-role">PROPOSAL</div>
+                        <div class="team-role">X PM B</div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-photo">
+                            <img src="p5.jpg" alt="Padilah">
+                        </div>
+                        <div class="team-name">Padilah</div>
+                        <div class="team-role">DESAINER</div>
+                        <div class="team-role">X DKV</div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-photo">
+                            <img src="P6.jpg" alt="Prabu Julyara">
+                        </div>
+                        <div class="team-name">Prabu Julyara</div>
+                        <div class="team-role">PROPOSAL</div>
+                        <div class="team-role">X MPLB A</div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-photo">
+                            <img src="P7.jpg" alt="Rahma Agustina">
+                        </div>
+                        <div class="team-name">Rahma Agustina</div>
+                        <div class="team-role">PROPOSAL</div>
+                        <div class="team-role">X PM B</div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-photo">
+                            <img src="p8.jpg" alt="Rahmat Tri Anggoro">
+                        </div>
+                        <div class="team-name">Rahmat Tri Anggoro</div>
+                        <div class="team-role">WEBSITE</div>
+                        <div class="team-role">X TKJ</div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-photo">
+                            <img src="P9.jpg" alt="Rexy Raymond">
+                        </div>
+                        <div class="team-name">Rexy Raymond</div>
+                        <div class="team-role">FOTOGRAFER</div>
+                        <div class="team-role">X DKV</div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-photo">
+                            <img src="P10.jpg" alt="Siti faujiah">
+                        </div>
+                        <div class="team-name">Siti faujiah</div>
+                        <div class="team-role">JURNAL</div>
+                        <div class="team-role">X MPLB B</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DOKUMENTASI -->
+            <section id="dokumentasi">
+                <h2>📸 Dokumentasi</h2>
+                <p class="section-subtitle">Perjalanan kita dari awal sampe jadi produk</p>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="potong.jpg" alt="Proses Pemotongan Kelapa">
+                        <div class="gallery-caption">Proses Pemotongan Kelapa</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="pengerokan.jpg" alt="Amplas Mangkok">
+                        <div class="gallery-caption">pengerokan daging kelapa</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="amplas.jpg" alt="Vernik/Finishing">
+                        <div class="gallery-caption">pengamplasan batok kelapa</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="vernik.jpg" alt="Foto Tim Nyiur Senja">
+                        <div class="gallery-caption">proses pengolesan vernik di bagian luar permukaan batok</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="poto1.jpg" alt="Produk Jadi Siap Jual">
+                        <div class="gallery-caption">Produk Jadi Siap Jual</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- KONTAK -->
+            <section id="kontak">
+                <h2>Hubungi Kami</h2>
+                <p class="section-subtitle">Mau pesen paket 3 mangkok? Chat langsung atau mampir ke SMK IBG 3 kami</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 900px; margin: 40px auto;">
+                    <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); text-align: center;">
+                        <div style="font-size: 40px; margin-bottom: 10px;">📱</div>
+                        <h3 style="color: var(--laut-dalam); margin-bottom: 10px;">WhatsApp</h3>
+                        <a href="https://wa.me/6283835743447" target="_blank" rel="noopener" style="display: inline-block; padding: 14px 30px; background: var(--gradient-utama); color: white; text-decoration: none; border-radius: 50px; font-weight: 600;">
+                            0838-3574-3447
+                        </a>
+                    </div>
+
+                    <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); text-align: center;">
+                        <div style="font-size: 40px; margin-bottom: 10px;">📍</div>
+                        <h3 style="color: var(--laut-dalam); margin-bottom: 10px;">Lokasi SMK INFORMATIKA BINA GENERASI 3</h3>
+                        <p style="color: #666; font-size: 14px; margin-bottom: 15px;">
+                            GG Merpati, Kp. Kabandungan<br>
+                            Sirnagalih, Kec. Tamansari<br>
+                            Kabupaten Bogor, Jawa Barat 16610
+                        </p>
+                        <a href="https://maps.google.com/?q=GG+Merpati+Kp+Kabandungan+Sirnagalih+Tamansari+Bogor" target="_blank" rel="noopener" style="display: inline-block; padding: 12px 25px; background: var(--laut-biru); color: white; text-decoration: none; border-radius: 50px; font-weight: 600;">
+                            Buka di Google Maps
+                        </a>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.5!2d106.692!3d-6.580!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c5b1c7c5e3d3%3A0x0!2sGG%20Merpati%2C%20Kp.%20Kabandungan%2C%20Sirnagalih%2C%20Kec.%20Tamansari%2C%20Kabupaten%20Bogor%2C%20Jawa%20Barat%2016610!5e0!3m2!1sid!2sid!4v1700000!5m2!1sid!2sid"
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p>🥥 © 2026 Nyiur Senja</p>
+            <p style="font-size: 14px; opacity: 0.8;">Halo <span id="namaUserFooter"></span>! Makasih udah mampir 👋</p>
+            <p style="font-size: 12px; margin-top: 10px;">Dibuat dengan ❤️ oleh Tim Nyiur Senja</p>
+        </footer>
+    </div>
+
+    <!-- POPUP MAKASIH -->
+    <div id="popupMakasih">
+        <div class="popup-content">
+            <p style="font-size: 40px;">🥥</p>
+            <p style="font-size: 18px; font-weight: 600; margin: 10px 0; color: var(--laut-dalam);">Makasih ya udah mau order!</p>
+            <p style="font-size: 14px; color: #666;">Tim Nyiur Senja bakal hubungi kamu via WA</p>
+        </div>
+    </div>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button id="backTop">⬆️</button>
+
+    <script>
+        // LOGIN SYSTEM + VALIDASI NAMA
+        window.onload = function() {
+            const nama = localStorage.getItem('namaPengunjung');
+            if(nama) {
+                showWebsite(nama);
+            }
+        }
+
+        function masuk() {
+            const nama = document.getElementById('namaInput').value.trim();
+            const errorMsg = document.getElementById('errorMsg');
+
+            if(nama.length < 3) {
+                errorMsg.textContent = "Nama minimal 3 huruf ya bre 😅";
+                errorMsg.style.display = 'block';
+                return;
+            }
+            if(/^\d+$/.test(nama)) {
+                errorMsg.textContent = "Nama jangan angka doang dong wkwk";
+                errorMsg.style.display = 'block';
+                return;
+            }
+
+            errorMsg.style.display = 'none';
+            localStorage.setItem('namaPengunjung', nama);
+            savePengunjung(nama);
+            showWebsite(nama);
+        }
+
+        function showWebsite(nama) {
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('mainWebsite').style.display = 'block';
+            document.getElementById('namaUser').innerText = nama;
+            document.getElementById('namaUserFooter').innerText = nama;
+            setTimeout(ketik, 500);
+        }
+
+        function gantiNama() {
+            if(confirm('Yakin mau ganti nama?')) {
+                localStorage.removeItem('namaPengunjung');
+                location.reload();
+            }
+        }
+
+        function savePengunjung(nama) {
+            let pengunjung = JSON.parse(localStorage.getItem('daftarPengunjung')) || [];
+            const now = new Date();
+            const data = {
+                nama: nama,
+                waktu: now.toLocaleString('id-ID', {
+                    weekday: 'long', day: 'numeric', month: 'long',
+                    hour: '2-digit', minute: '2-digit'
+                })
+            };
+            const udahAda = pengunjung.find(p => p.nama.toLowerCase() === nama.toLowerCase());
+            if(!udahAda) {
+                pengunjung.unshift(data);
+                if(pengunjung.length > 100) pengunjung = pengunjung.slice(0, 100);
+                localStorage.setItem('daftarPengunjung', JSON.stringify(pengunjung));
+            }
+        }
+
+        function lihatPengunjung() {
+            const pengunjung = JSON.parse(localStorage.getItem('daftarPengunjung')) || [];
+            if(pengunjung.length === 0) {
+                alert('Belum ada pengunjung');
+                return;
+            }
+            let text = `👥 DAFTAR PENGUNJUNG NYIUR SENJA\nTotal: ${pengunjung.length} orang\n`;
+            pengunjung.forEach((p, i) => {
+                text += `${i+1}. ${p.nama}\n   ${p.waktu}\n\n`;
+            });
+            alert(text);
+        }
+
+        // HAMBURGER MENU
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+            document.querySelector('.hamburger').classList.toggle('active');
+        }
+
+        function scrollToSection(e, id) {
+            e.preventDefault();
+            closeMenu();
+            
+            setTimeout(() => {
+                const section = document.getElementById(id);
+                if(section) {
+                    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 300);
+        }
+
+        function closeMenu() {
+            document.getElementById('navMenu').classList.remove('active');
+            document.querySelector('.hamburger').classList.remove('active');
+        }
+
+        // EFEK KETIK
+        const text = "Mangkok Batok Kelapa Nyiur Senja";
+        let i = 0;
+        function ketik() {
+            if(i < text.length) {
+                document.getElementById('typingText').innerHTML += text.charAt(i);
+                i++;
+                setTimeout(ketik, 80);
+            }
+        }
+
+        // BACK TO TOP
+        const backTop = document.getElementById('backTop');
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backTop.style.display = "block";
+            } else {
+                backTop.style.display = "none";
+            }
+        };
+        backTop.onclick = function() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        };
+
+        // WHATSAPP + POPUP MAKASIH
+        const noWA = '6283835743447';
+        document.querySelectorAll('.btn-buy').forEach(button => {
+            button.addEventListener('click', function() {
+                const namaProduk = this.getAttribute('data-nama');
+                const harga = this.getAttribute('data-harga');
+                const namaPengunjung = localStorage.getItem('namaPengunjung') || 'Pengunjung';
+                const pesan = `Halo Nyiur Senja 👋%0A%0ASaya ${namaPengunjung}%0AMau pesan:%0A${namaProduk}%0AHarga: ${harga}%0A%0ABisa info paket 3 mangkok + ongkir ke Bogor?`;
+                
+                // Tampilkan popup makasih 2 detik
+                const popup = document.getElementById('popupMakasih');
+                popup.style.display = 'flex';
+                setTimeout(() => {
+                    popup.style.display = 'none';
+                    window.open(`https://wa.me/${noWA}?text=${pesan}`, '_blank', 'noopener,noreferrer');
+                }, 2000);
+            });
+        });
+
+        // ENTER submit
+        document.getElementById('namaInput').addEventListener('keypress', function(e) {
+            if(e.key === 'Enter') masuk();
+        });
+    </script>
+
+</body>
+</html>
